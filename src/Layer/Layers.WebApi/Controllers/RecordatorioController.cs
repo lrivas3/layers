@@ -1,14 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Layers.Dto.Request;
+using Layers.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Layers.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/recordatorio")]
 [ApiController]
-public class LayersController : ControllerBase
+public class RecordatorioController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Index()
+    private readonly IRecordatorio _recordatorio;
+
+    public RecordatorioController(IRecordatorio recordatorio)
     {
-        return Ok();
+        _recordatorio = recordatorio;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRecordatorio(RecordatorioRequest recordatorioRequest)
+    { 
+        return  Ok(await _recordatorio.CrearRecordatorio(recordatorioRequest));
     }
 }

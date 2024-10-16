@@ -1,6 +1,8 @@
-﻿namespace Layers.Interfaces.Repositories;
+﻿using Layers.Models;
 
-public class IRecordatorioRepository
+namespace Layers.Interfaces.Repositories;
+
+public interface IRecordatorioRepository
 {
-    
+    Task<Recordatorio?> AddRecordatorio(Recordatorio recordatorio);
 }

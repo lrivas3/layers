@@ -8,7 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.2.24474.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Layers.DAL\Layers.DAL.csproj" />
+    <ProjectReference Include="..\Layers.Dto\Layers.Dto.csproj" />
+    <ProjectReference Include="..\Layers.Interfaces\Layers.Interfaces.csproj" />
+    <ProjectReference Include="..\Layers.Services\Layers.Services.csproj" />
   </ItemGroup>
 
 </Project>

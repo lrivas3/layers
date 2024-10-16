@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Layers.Dto\Layers.Dto.csproj" />
+    <ProjectReference Include="..\Layers.Models\Layers.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,12 @@
-﻿namespace Layers.WebApi.configs;
+﻿using Layers.Interfaces;
+using Layers.Services;
 
-public class ServicesConfig
+namespace Layers.WebApi.configs;
+
+public static class ServicesConfig
 {
-    
+    public static void AddServicesConfig(this IServiceCollection services)
+    {
+        services.AddScoped<IRecordatorio, RecordatorioService>();
+    }
 }

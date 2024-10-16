@@ -1,9 +1,9 @@
-﻿using Layers.DAL;
-using Layers.Dto.Request;
+﻿using Layers.Dto.Request;
+using Layers.Models;
 
-namespace Layers.Interfaces.CIT;
+namespace Layers.Interfaces;
 
 public interface IRecordatorio
 {
-    Recordatorio CrearRecordatorio(RecordatorioRequest recordatorioRequest);
+    Task<Recordatorio?> CrearRecordatorio(RecordatorioRequest recordatorioRequest);
 }
