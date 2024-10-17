@@ -1,7 +1,9 @@
-﻿using Layers.Dto.Request;
+﻿using ErrorOr;
+using Layers.Dto.Request;
 using Layers.Interfaces;
 using Layers.Interfaces.Repositories;
 using Layers.Models;
+using Layers.Services.Common.Errors;
 using Layers.Services.Utils;
 
 namespace Layers.Services;
@@ -15,7 +17,7 @@ public class RecordatorioService : IRecordatorio
         _recordatorioRepository = recordatorioRepository;
     }
 
-    public async Task<Recordatorio?> CrearRecordatorio(RecordatorioRequest recordatorioRequest)
+    public async Task<ErrorOr<Recordatorio?>> CrearRecordatorio(RecordatorioRequest recordatorioRequest)
     {
         var nuevoRecordatorio = new Recordatorio
         {
@@ -33,7 +35,7 @@ public class RecordatorioService : IRecordatorio
 
         if (guardado is null)
         {
-            throw new Exception("No se pudo crear el recordatorio");
+            return Errors.Recordatorio.NotFoundRecordatorio(nuevoRecordatorio.Id);
         }
 
         return guardado;

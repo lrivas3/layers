@@ -1,9 +1,10 @@
-﻿using Layers.Dto.Request;
+﻿using ErrorOr;
+using Layers.Dto.Request;
 using Layers.Models;
 
 namespace Layers.Interfaces;
 
 public interface IRecordatorio
 {
-    Task<Recordatorio?> CrearRecordatorio(RecordatorioRequest recordatorioRequest);
+    Task<ErrorOr<Recordatorio?>> CrearRecordatorio(RecordatorioRequest recordatorioRequest);
 }

@@ -6,7 +6,7 @@ namespace Layers.WebApi.Controllers;
 
 [Route("api/recordatorio")]
 [ApiController]
-public class RecordatorioController : ControllerBase
+public class RecordatorioController : ApiController
 {
     private readonly IRecordatorio _recordatorio;
 
@@ -17,7 +17,10 @@ public class RecordatorioController : ControllerBase
 
     [HttpPost]
     public async Task<IActionResult> CreateRecordatorio(RecordatorioRequest recordatorioRequest)
-    { 
-        return  Ok(await _recordatorio.CrearRecordatorio(recordatorioRequest));
+    {
+        var result = await _recordatorio.CrearRecordatorio(recordatorioRequest);
+        return result.Match(
+            recordatorio => Ok(recordatorio),
+            error => Problem(error));
     }
 }
